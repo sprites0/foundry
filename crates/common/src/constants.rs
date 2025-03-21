@@ -68,13 +68,13 @@ pub fn is_impersonated_sig(sig: &PrimitiveSignature, ty: u8) -> bool {
         B256::with_last_byte(1),
         false,
     );
-    if ty != SYSTEM_TRANSACTION_TYPE && sig == &impersonated_sig {
+    if ty != SYSTEM_TRANSACTION_TYPE && sig.r() == impersonated_sig.r() {
         return true;
     }
     false
 }
-
 #[cfg(test)]
+
 mod tests {
     use super::*;
     use std::str::FromStr;

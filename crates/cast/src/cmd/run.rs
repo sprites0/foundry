@@ -151,6 +151,7 @@ impl RunArgs {
 
         env.cfg.disable_block_gas_limit = self.disable_block_gas_limit;
         env.block.number = U256::from(tx_block_number);
+        env.cfg.disable_base_fee = true;
 
         if let Some(block) = &block {
             env.block.timestamp = U256::from(block.header.timestamp);
